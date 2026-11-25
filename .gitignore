@@ -1,0 +1,15 @@
+# API key
+.env
+
+# Test runs and demonstration outputs
+results_test/
+evaluation/DEMO/
+
+# System and editor files
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+~$*
+
+# Earlier notebook versions kept locally
+code/ignore/
