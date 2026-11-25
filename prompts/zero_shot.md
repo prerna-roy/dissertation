@@ -1,49 +1,20 @@
 # Zero-shot prompts
 
-The system and user messages below were taken from the audit logs (`results/prompt_development/audit_log.jsonl`, `results/internal_validation/audit_log.jsonl`, `results/external_validation/audit_log.jsonl`), which record the text sent with every call. Every logged call of a version carried the same text, and the SHA-256 code recomputed from this text (as in `prompt_fingerprint` in `prompting_pipeline_final.ipynb`) matched the code logged with every call. The report PDFs are not reproduced. Versions that were not eligible are in `results/prompt_versions.jsonl`.
-
-Words are counted over the system and user messages. Stages: PD = prompt development, IV = internal validation, EV = external validation.
-
-**How each prompt reached the model.** The system message (if any), then one user message holding the user text followed by the report PDF, supplied by its web address.
-
-| Prompt version | Code (hash) | Words | Stages run (calls) |
-|---|---|---|---|
-| [Z0_v1](#z0_v1) | `74881d6c1b` | 0 | PD (27) |
-| [Z1_v1](#z1_v1) | `ceedf85742` | 113 | PD (25) |
-| [Z2_v1](#z2_v1) | `500c8366df` | 232 | PD (25) |
-| [Z3_v1](#z3_v1) | `6c2e0bd6a6` | 292 | PD (25) |
-| [Z4_v2](#z4_v2) | `9c0f43af5b` | 1,693 | PD (25) |
-| [Z5_v2](#z5_v2) | `a516faab82` | 2,405 | PD (25) |
-| [Z6_v2](#z6_v2) | `699bd13387` | 3,104 | PD (25) |
-| [Z7_v2](#z7_v2) | `00791bc993` | 2,925 | PD (25), IV (25), EV (40) |
-
-Z0_v1 has 27 calls: two duplicate calls on report 1 were made when the run was restarted, and the later call of each pair was scored (Appendix F.4).
-
 ## Z0_v1
-
-Code `74881d6c1b`; first used 2026-10-24 12:31; 0 words.
 
 **System message**
 
-```text
-(empty)
-```
+_(none)_
 
 **User message** (followed by the report PDF)
 
-```text
-(empty)
-```
+_(none)_
 
 ## Z1_v1
 
-Code `ceedf85742`; first used 2026-10-24 12:33; 113 words.
-
 **System message**
 
-```text
-(empty)
-```
+_(none)_
 
 **User message** (followed by the report PDF)
 
@@ -52,8 +23,6 @@ Extract the following medical and demographic information from the given coronia
 ```
 
 ## Z2_v1
-
-Code `500c8366df`; first used 2026-10-24 12:34; 232 words.
 
 **System message**
 
@@ -69,8 +38,6 @@ Extract the following medical and demographic information from the given coronia
 
 ## Z3_v1
 
-Code `6c2e0bd6a6`; first used 2026-10-24 12:35; 292 words.
-
 **System message**
 
 ```text
@@ -85,8 +52,6 @@ Extract the following medical and demographic information from the given coronia
 
 ## Z4_v2
 
-Code `9c0f43af5b`; first used 2026-10-25 22:48; 1,693 words.
-
 **System message**
 
 ```text
@@ -100,8 +65,6 @@ Extract the following medical and demographic information from the given coronia
 ```
 
 ## Z5_v2
-
-Code `a516faab82`; first used 2026-10-25 22:50; 2,405 words.
 
 **System message**
 
@@ -180,8 +143,6 @@ Extract the following medical and demographic information from the given coronia
 ```
 
 ## Z6_v2
-
-Code `699bd13387`; first used 2026-10-25 22:51; 3,104 words.
 
 **System message**
 
@@ -369,8 +330,6 @@ Extract the following medical and demographic information from the given coronia
 ```
 
 ## Z7_v2
-
-Code `00791bc993`; first used 2026-10-25 22:52; 2,925 words.
 
 **System message**
 

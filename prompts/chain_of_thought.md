@@ -1,23 +1,6 @@
 # Chain-of-thought prompts
 
-The system and user messages below were taken from the audit logs (`results/prompt_development/audit_log.jsonl`, `results/internal_validation/audit_log.jsonl`, `results/external_validation/audit_log.jsonl`), which record the text sent with every call. Every logged call of a version carried the same text, and the SHA-256 code recomputed from this text (as in `prompt_fingerprint` in `prompting_pipeline_final.ipynb`) matched the code logged with every call. The report PDFs are not reproduced. Versions that were not eligible are in `results/prompt_versions.jsonl`.
-
-Words are counted over the system and user messages. Stages: PD = prompt development, IV = internal validation, EV = external validation.
-
-**How each prompt reached the model.** As for the zero-shot prompts. The reasoning or evidence was returned in a separate field of the output; COT1_struct and COT2_C used a second schema (`ExtractionWithEvidence`) that holds the evidence as a structured list.
-
-| Prompt version | Code (hash) | Words | Stages run (calls) |
-|---|---|---|---|
-| [COT1_v2](#cot1_v2) | `bf75522b8f` | 1,726 | PD (25) |
-| [COT1_evidence_v1](#cot1_evidence_v1) | `0cd1eff7ad` | 1,759 | PD (25) |
-| [COT1_struct_v2](#cot1_struct_v2) | `0b6f4e1db4` | 1,761 | PD (25) |
-| [COT2_A_v2](#cot2_a_v2) | `e1fecf269c` | 3,207 | PD (25), IV (25) |
-| [COT2_B_v2](#cot2_b_v2) | `69d177535f` | 3,217 | PD (25) |
-| [COT2_C_v2](#cot2_c_v2) | `faa38bd1c6` | 3,180 | PD (25) |
-
 ## COT1_v2
-
-Code `bf75522b8f`; first used 2026-10-25 23:41; 1,726 words.
 
 **System message**
 
@@ -35,8 +18,6 @@ Before producing your final answer, reason step by step through the report to de
 
 ## COT1_evidence_v1
 
-Code `0cd1eff7ad`; first used 2026-10-26 09:39; 1,759 words.
-
 **System message**
 
 ```text
@@ -53,8 +34,6 @@ Before giving the extraction, use the `reasoning` field as follows. For each boo
 
 ## COT1_struct_v2
 
-Code `0b6f4e1db4`; first used 2026-10-25 23:42; 1,761 words.
-
 **System message**
 
 ```text
@@ -70,8 +49,6 @@ Complete the `evidence` field first. It is a list with one entry for each boolea
 ```
 
 ## COT2_A_v2
-
-Code `e1fecf269c`; first used 2026-10-25 23:44; 3,207 words.
 
 **System message**
 
@@ -262,8 +239,6 @@ Before giving the extraction, use the `reasoning` field to work through every va
 
 ## COT2_B_v2
 
-Code `69d177535f`; first used 2026-10-25 23:47; 3,217 words.
-
 **System message**
 
 ```text
@@ -452,8 +427,6 @@ Before giving the extraction, use the `reasoning` field for the variables that n
 ```
 
 ## COT2_C_v2
-
-Code `faa38bd1c6`; first used 2026-10-25 23:49; 3,180 words.
 
 **System message**
 
