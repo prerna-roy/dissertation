@@ -1,0 +1,15 @@
+# Python 3.11.15 (the version used in the study)
+# Extraction
+openai==2.45.0
+pydantic==2.13.4
+python-dotenv==1.2.2
+# Data handling
+pandas==3.0.3
+numpy==2.4.6
+openpyxl==3.1.5
+# Scoring (bert-score installs torch and downloads roberta-large on first use)
+bert-score==0.3.13
+rouge-score==0.1.2
+sacrebleu==2.6.0
+# Optional: file-number check in check_report_links.ipynb
+pypdf
