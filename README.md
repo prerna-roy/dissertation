@@ -14,7 +14,6 @@ code/
   evaluation_pipeline_final.ipynb     Scores the audit logs against the reference standard and ranks the prompt versions
 data/
   report_links.jsonl                  Report number, dataset, file number and URL of every report
-  report_dataset_final_v15_clean.xlsx Reference standard (annotated values of the 28 variables) and data dictionary
   random_date_draws_20260927.jsonl              Dates drawn for the study sample (seed 2804, draws 1 to 22)
   random_date_replacement_draws_20261024.jsonl  Replacement and reserve dates for the withdrawn report (seed 2804, draws 23 to 27)
   random_date_fewshot_draws_20261018.jsonl      Dates drawn for the two worked examples (seed 1904)
@@ -43,25 +42,27 @@ evaluation/
 
 ## Reference standard
 
+The reference standard (the annotated values of the 28 variables for the 50 reports, with the data dictionary) is not included in this repository. It is available from the author upon reasonable request.
+
 The reference standard was refined during the study. Each stage was scored against the version that was current at the time:
 
 | Version | Used for | Change from the previous version |
 |---|---|---|
 | v11 | Prompt development and internal validation | Final version of the prompt development and internal validation reports, after the review of the reference standard described in Appendix F.2 of the dissertation |
 | v14 | External validation | Review of the 40 external validation reports before scoring (v12 to v14): 120 cells in 37 external validation reports; no prompt development or internal validation report changed |
-| v15_clean | This repository | v14 with the withdrawn report 15 removed; formatting only otherwise |
+| v15_clean | Final version (available on request) | v14 with the withdrawn report 15 removed; formatting only otherwise |
 
-The values of the prompt development and internal validation reports in `report_dataset_final_v15_clean.xlsx` are identical to v11, and those of the external validation reports are identical to v14, so this file reproduces every score of the study. The `README` sheets of the evaluation workbooks name the version used when each stage was scored.
+The values of the prompt development and internal validation reports in the final version (`report_dataset_final_v15_clean.xlsx`) are identical to v11, and those of the external validation reports are identical to v14, so this file reproduces every score of the study. The `README` sheets of the evaluation workbooks name the version used when each stage was scored.
 
 ## Reproducing the analysis
 
 1. Create a Python 3.11 environment and install the packages: `pip install -r requirements.txt`.
 2. Copy `.env.example` to `.env` and add an OpenAI API key (needed for the prompting pipeline and the parameter check).
 3. Run the notebooks from the `code/` folder; the file paths have been updated to be relative to it.
-   - `report_selection_final.ipynb` reproduces the date draws and the allocation (see the note in the notebook on the withdrawn report).
+   - `report_selection_final.ipynb` reproduces the date draws and the allocation (see the note in the notebook on the withdrawn report). The allocation step reads the report numbers from the reference standard workbook, which must first be obtained on request and saved as `data/report_dataset_final_v15_clean.xlsx`.
    - `check_report_links_final.ipynb` checks the report links.
    - `prompting_pipeline_final.ipynb` runs the prompts. `ALLOWED_DATASETS` and `DATASET` (Section 3) select the dataset; `TEST_MODE = True` runs a test report only.
-   - `evaluation_pipeline_final.ipynb` scores a stage. `STAGE` (Section 12) selects the stage.
+   - `evaluation_pipeline_final.ipynb` scores a stage. `STAGE` (Section 12) selects the stage. Scoring requires the reference standard workbook, saved as `data/report_dataset_final_v15_clean.xlsx`.
 
 The reports are read from the NSW Coroners Court website by URL and are not stored in this repository. A report withdrawn from the website can no longer be run. The model's outputs vary between calls, so a new run will not reproduce the audit logs exactly; the evaluation of the stored audit logs is reproducible.
 
